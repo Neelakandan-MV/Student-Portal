@@ -1,0 +1,36 @@
+<%- include('header') -%>
+
+<div class="center-div text-center dash1">
+    <div class="container border rounded-4 w-25 py-5 bg-blur">
+        <div class="title pb-3">
+            <h2 class="font-weight-bold text-center text-light">SIGNUP</h2>
+        </div>
+        <%if(locals. signupAlert){%>
+            <div class="text-center text-danger" id="signupAlert" role="alert">
+              <%=(locals. signupAlert)%>
+            </div>
+            <%}%>
+        <%if(locals. signup){%>
+            <div class="text-center text-danger" id="signupAlert" role="alert">
+              <%=(locals. signup)%>
+            </div>
+            <%}%>
+    <form action="/signup" method="POST" class="form">
+        <div class="form-group mb-3">
+            <small class="form-text text-light text-left mb-2">Enter Your Details</small>
+            <input type="text" class="form-control mb-3 text-light" placeholder="Full Name" name="username" onclick="this.style.backgroundColor = '#000'" required>
+            <input type="email" class="form-control mb-3 text-light" placeholder="E-mail" name="email" onclick="this.style.backgroundColor = '#000'" required>
+            <input type="password" class="form-control mb-3 text-light" placeholder="Password" name="password" onclick="this.style.backgroundColor = '#000'" required>
+            <input type="number" class="form-control mb-3 text-light" placeholder="Contact Number" name="phone" onclick="this.style.backgroundColor = '#000'" required>
+
+            <button type="submit" class="btn btn-outline-light">Submit</button>
+        </div>
+    </form>
+    </div>
+</div>
+<script>
+    setTimeout(()=>{
+        document.getElementById('signupAlert').style.display='none'
+    },3000)
+</script>
+<%- include('footer') -%>

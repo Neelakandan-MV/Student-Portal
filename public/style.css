@@ -1,0 +1,92 @@
+body{
+    overflow-y:hidden;
+}
+
+.userloginpage{
+    background-image: url(assests/wallpaperflare.com_wallpaper.jpg);
+    background-size: contain;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+.form-control{
+    background-color: rgba(0, 0, 0, 0);
+  /* border: 1px solid #ccc; */
+  
+}
+.form-control::placeholder{
+   color: #ffffff
+};
+input:active{
+    background-color: green;
+}
+.bg-blur {
+    backdrop-filter: blur(5px);
+}
+#container {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+.container {
+    border-radius: 20px;
+}
+.center-div{
+    padding-top:8%;
+    padding-bottom: 10%;
+}
+#user{
+    color: #d0d4d3;
+}
+form{
+    padding: 2em 1em;
+}
+#login .title>span{
+    font-size: 1em;
+}
+#loginput{
+    backdrop-filter: blur(5px);
+}
+#user-btn {
+    margin-top: 30px;
+}
+.btn {
+  margin-top: 10px;
+  color: rgb(255, 255, 255);
+  padding:10px 70px;
+}
+.btn:hover {
+    background-color: rgba(138, 138, 138, 0.7);
+    color: white;
+}
+.dash {
+    /* height: 740px; */
+    height: 768px;
+    background-size:contain ;
+}
+.dash1 {
+    height: 768px;
+    background-image: url(assests/wallpaperflare.com_wallpaper.jpg);
+    /* background: radial-gradient(circle at 50.4% 50.5%, rgb(15, 15, 15) 0%, rgb(0, 0, 0) 90%); */
+    background-size:contain ;
+    
+}
+.head {
+    font-size: 70px;
+}
+.search{
+    margin-left: 20px;
+    padding-left: 30px;
+    width: 20%;
+}
+#logout{
+    position: absolute;
+}
+
+#email-field{
+
+    border-bottom: 2px solid #a3a3a3;
+    
+}
+#email-error{
+    color: rgb(255, 53, 53);
+    font-size: 12px;
+}

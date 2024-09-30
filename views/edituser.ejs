@@ -1,0 +1,75 @@
+<%- include('header') -%>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-white">
+    <a class="navbar-brand m-2 text-dark" href="#"><b>Admin Panel</b></a>
+ 
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#"
+            >Edit User (<%= user.username %>)</a>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ml-auto me-2">
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-dark me-2 text-dark" href="/add">Add user</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-dark me-2 text-danger" href="/adminlogout">Logout</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+  
+  <div class="bg-dark dash1 pt-3 text-center">
+    <div class="container border rounded-1 w-25  py-5 bg-blur">
+    <!-- <div class="container rounded w-25 signOuter"> -->
+      <h5 class="mt-5 mb-5 text-light text-center">Edit User</h5>
+      <%if(locals.alert){%>
+        <div class="text-center text-danger" style="position: absolute;" id="edit" role="alert">
+          <%=(locals.alert)%>
+        </div>
+        <%}%>
+      <form action="/update/user/<%= user.id %>" method="post">
+        <input
+          type="text"
+          placeholder="Username"
+          value="<%= user.username %>"
+          name="username"
+          class="form-control mt-4 mb-3 text-light"
+          onclick="this.style.backgroundColor = '#000'"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value="<%= user.email %>"
+          name="email"
+          class="form-control mb-3 text-light"
+          onclick="this.style.backgroundColor = '#000'"
+        />
+        <input
+          type="number"
+          placeholder="Phone"
+          value="<%= user.phone %>"
+          name="phone"
+          class="form-control mb-3 text-light"
+          onclick="this.style.backgroundColor = '#000'"
+        />
+  
+        <!-- <input type="hidden" name="id" value=""> -->
+        <button type="submit" class="btn btn-dark mb-5">Update user</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  
+    setTimeout(() => {
+  document.getElementById("edit").style.display = "none";
+  }, 3000);
+  
+  </script>
+
+<%- include('footer') -%>

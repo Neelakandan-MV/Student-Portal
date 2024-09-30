@@ -1,0 +1,56 @@
+<%- include('header') -%>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-white">
+    <a class="navbar-brand m-2 text-dark" href="#"><b>Admin Panel</b></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+      <ul class="navbar-nav ml-auto me-2">
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-dark me-2 text-dark" href="/add">Add Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-dark me-2 text-danger" href="/adminlogout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="center-div text-center dash1">
+    <h4 class="text-light">Add Student</h4>
+    <div class="container border rounded-1 w-25 h-75 py-5 bg-blur">
+        <% if(locals.alert) {%>
+            <div class="text-center text-danger" id="alert">
+                <%=locals.alert %>
+            </div>
+            <% } %>
+        <div class="title pb-3">
+            <form action="/add" method="POST" class="form">
+                <div class="form-group mb-3">
+                    <small class="form-text text-light text-left mb-2" >Enter Your Details</small>
+                    <input type="text" class="form-control mb-3 text-light" placeholder="Full Name" name="username" onclick="this.style.backgroundColor = '#000'" required>
+                    <input type="email" class="form-control mb-3 text-light" placeholder="E-mail" name="email" onclick="this.style.backgroundColor = '#000'" required>
+                    <input type="password" class="form-control mb-3 text-light" placeholder="Password" name="password" onclick="this.style.backgroundColor = '#000'" required>
+                    <input type="number" class="form-control mb-3 text-light" placeholder="Contact Number" name="phone" onclick="this.style.backgroundColor = '#000'" required>
+        
+                    <button type="submit" class="btn btn-outline-light">Submit</button>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(() => {
+        document.getElementById('alert').style.display='none'
+    }, 3000);
+</script>
+
+
+<%- include('footer') -%>

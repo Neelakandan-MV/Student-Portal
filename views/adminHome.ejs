@@ -1,0 +1,92 @@
+<%-include('header')%>
+
+<nav class="navbar navbar-expand-lg bg-dark">
+  <a class="navbar-brand m-2 text-light" href="/adminHome"><b>Admin Panel</b></a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control container search text-light" id="search" type="search" placeholder="Search" aria-label="Search" onclick="this.style.backgroundColor = '#000'">
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+    <ul class="navbar-nav ml-auto me-2">
+      <li class="nav-item">
+        <a class="nav-link btn btn-dark me-2" href="/add">Add Students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-dark text-danger" href="/adminlogout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row my-4">
+    <div class="col-1g-12">
+      <div class="table-responsieve">
+        <% if (user !=null) { %>
+        <table class="table table-striped text-center">
+          <thead>
+            <tr class="table-dark">
+              <th>ID</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="table-light">
+            <% user.forEach((row,index) => {%>
+            <tr>
+              <td><%=index+1%></td>
+              <td><%=row.username%></td>
+              <td><%=row.email%></td>
+              <td><%=row.phone%></td>
+              <td>
+                <a href="/edit/<%=row._id%>" class="text-success"
+                  ><i class="fas fa-edit fa-lg mx-1"></i
+                ></a>
+                <a href="/delete/<%=row._id%>" class="text-danger" 
+                  ><i class="fas fa-trash fa-lg mx-1"></i
+                ></a>
+              </td>
+            </tr>
+            <%}); %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <h1 class="text-center text-secondary mt-5">
+          No users found on database
+        </h1>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('search');
+    const tableRows = document.querySelectorAll('.table-light tr');
+
+    searchInput.addEventListener('input', function () {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      tableRows.forEach(function (row) {
+        const username = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+        if (username.includes(searchTerm)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+<%-include('footer')%>

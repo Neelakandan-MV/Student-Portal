@@ -1,0 +1,61 @@
+<%-include('header')-%>
+<div class="userloginpage">
+    <div class="center-div text-center" id="login">
+        <div class="container border rounded-4 w-25 py-5" id="loginput">
+            <div class="title pb-3">
+                <h2 class="font-weight-bold text-center text-light">Student Portal</h2>
+                <h2 class="font-weight-bold text-center text-light">LOGIN</h2>
+            </div>
+            <% if(locals.alert){ %>
+            <div class="alert alert-danger text-center" id="alert" role="alert">
+                <%= locals.alert %>
+            </div>
+            <% } %>
+            <form action="/homepage" method="POST" class="form" onsubmit="return validateForm()">
+                <div class="form-group mb-3">
+                    <small class="form-text text-light text-left">Enter Your Credentials</small>
+                    <input type="email" class="form-control text-light" onclick="this.style.backgroundColor = '#000'" placeholder="E-mail"  name="email" id="email-field" oninput="validateEmail()">
+                    <span id="email-error"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="password" class="form-control text-light" placeholder="Password" name="password" onclick="this.style.backgroundColor = '#000'" required>
+                </div>
+                <button type="submit" class="btn btn-outline-light" id="user-btn">Submit</button>
+                <a href="/signup"><button type="button" class="btn btn-link">Sign-Up</button></a>
+            </form>
+        </div>
+    </div>
+</div>
+    <script>
+
+        var emailField = document.getElementById("email-field");
+        var emailError = document.getElementById("email-error");
+
+    //validation
+
+    function validateEmail() {
+        const isValid = emailField.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/);
+        
+        if (!isValid) {
+            emailError.innerHTML = "Please enter a valid email address";
+            emailField.style.borderBottomColor = "red";
+            return false;
+        } else {
+            emailError.innerHTML = "";
+            emailField.style.borderBottomColor = "green";
+            return true;
+        }
+    }
+
+    function validateForm() {
+        
+        return validateEmail();
+    }
+    </script>
+    <script>
+        setTimeout(() => {
+        document.getElementById('alert').style.display = 'none';
+    },3000)
+    </script>
+
+ <%-include('footer')-%>
