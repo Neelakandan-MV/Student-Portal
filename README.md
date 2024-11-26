@@ -1,4 +1,4 @@
-# User Management System
+# Student Management System
 
 A web application for managing user profiles, built with **TypeScript** for the backend and **EJS** for the front-end. This system allows users to create, read, update, and delete their profiles, while administrators have special access to manage all user data through an admin dashboard.
 
